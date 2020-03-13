@@ -15,14 +15,14 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
     switch_devices = bridge.get_devices_by_domain(DOMAIN)
 
     for switch_device in switch_devices:
-        dev = LutronCasetaLight(switch_device, bridge)
+        dev = LutronCasetaSwitch(switch_device, bridge)
         devs.append(dev)
 
     async_add_entities(devs, True)
     return True
 
 
-class LutronCasetaLight(LutronCasetaDevice, SwitchDevice):
+class LutronCasetaSwitch(LutronCasetaDevice, SwitchDevice):
     """Representation of a Lutron Caseta switch."""
 
     async def async_turn_on(self, **kwargs):
